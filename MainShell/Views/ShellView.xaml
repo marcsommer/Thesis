@@ -1,0 +1,9 @@
+﻿<Window x:Class="MainShell.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+        Title="ShellView" Height="300" Width="300">
+    <Grid>
+		<ContentControl cal:Bind.Model="{Binding InputGeneration}"/>
+	</Grid>
+</Window>

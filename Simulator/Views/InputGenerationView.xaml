@@ -1,0 +1,73 @@
+﻿<Window x:Class="Simulator.Views.InputGenerationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Input Generation View" Height="400" Width="600">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="50"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="90"/>
+			<ColumnDefinition Width="90"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Border  Grid.Column="0" Grid.ColumnSpan="2">
+			<Grid Grid.Column="0" Grid.ColumnSpan="2">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="50"/>
+					<RowDefinition Height="20"/>
+					<RowDefinition Height="50"/>
+					<RowDefinition Height="20"/>
+					<RowDefinition Height="50"/>
+					<RowDefinition Height="20"/>
+					<RowDefinition Height="50"/>
+					<RowDefinition Height="20"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="160"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<Label  Grid.Row="0" Grid.Column="0"  Content="Outer Radius: "/>
+				<Label  Grid.Row="2" Grid.Column="0"  Content="Inner Radius: "/>
+				<Label  Grid.Row="4" Grid.Column="0"  Content="Finite Element Count: "/>
+
+				<Label  Grid.Row="6" Grid.Column="0" Content="Filename: "/>
+
+				<TextBox Grid.Row="0" Grid.Column="1" Name="OuterRadius"/>
+				<TextBox Grid.Row="2" Grid.Column="1" Name="InnerRadius"/>
+				<TextBox Grid.Row="4" Grid.Column="1" Name="FiniteElementCount"/>
+				<TextBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Name="Filename"/>
+			</Grid>
+		</Border>
+		<Border  Grid.Column="2" Grid.ColumnSpan="2">
+			<Grid Grid.Column="2" Grid.ColumnSpan="2">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="50"/>
+					<RowDefinition Height="20"/>
+					<RowDefinition Height="50"/>
+					<RowDefinition Height="20"/>
+					<RowDefinition Height="50"/>
+					<RowDefinition Height="20"/>
+					<RowDefinition Height="50"/>
+					<RowDefinition Height="20"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="160"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<Label  Grid.Row="0" Grid.Column="0" Content="Elasticity coefficient: "/>
+				<Label  Grid.Row="2" Grid.Column="0" Content="Poisson's coefficient: "/>
+				<Label  Grid.Row="4" Grid.Column="0" Content="Angle of cornea dilation: "/>
+				<Label  Grid.Row="6" Grid.Column="0" Content="Pressure: "/>
+
+				<TextBox Grid.Row="0" Grid.Column="1" Name="ElasticityCoefficient"/>
+				<TextBox Grid.Row="2" Grid.Column="1" Name="PoissonCoefficient"/>
+				<TextBox Grid.Row="4" Grid.Column="1" Name="GammaAngle"/>
+				<TextBox Grid.Row="6" Grid.Column="1" Name="Pressure"/>
+			</Grid>
+		</Border>
+		<Button Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Content="Generate" Name="Save"/>
+	</Grid>
+</Window>
