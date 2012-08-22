@@ -11,21 +11,22 @@ using Simulator.ViewModels;
 
 namespace MainShell
 {
-	internal class AppBootstrapper : Bootstrapper<IShell>
+	internal class AppBootstrapper : Bootstrapper<ShellViewModel>
 	{
 		private IContainer container;
 
 		protected override void Configure()
 		{
 			var builder = new ContainerBuilder();
+			AssemblySource.Instance.Add(typeof(InputGenerationViewModel).Assembly);
 			builder.Register(x => new WindowManager()).As<IWindowManager>();
 			builder.Register(x => new EventAggregator()).As<IEventAggregator>();
-			builder.Register(x => new ShellViewModel()).AsImplementedInterfaces();
 			builder.Register(x => new InputGenerationViewModel()).AsSelf();
 			builder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());
 
 			container = builder.Build();
 		}
+
 
 		private Service GetServiceForKey(string key)
 		{

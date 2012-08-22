@@ -1,7 +1,8 @@
-﻿<Window x:Class="Simulator.Views.InputGenerationView"
+﻿<Controls:MetroWindow x:Class="Simulator.Views.InputGenerationView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Input Generation View" Height="400" Width="600">
+                 xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                 Title="Input Generation View" Height="400" Width="700">
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"/>
@@ -13,7 +14,7 @@
 			<ColumnDefinition Width="90"/>
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
-		<Border  Grid.Column="0" Grid.ColumnSpan="2">
+		<Border  Grid.Column="0" Grid.ColumnSpan="2" Margin="5,5,5,5">
 			<Grid Grid.Column="0" Grid.ColumnSpan="2">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="50"/>
@@ -41,7 +42,7 @@
 				<TextBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Name="Filename"/>
 			</Grid>
 		</Border>
-		<Border  Grid.Column="2" Grid.ColumnSpan="2">
+		<Border  Grid.Column="2" Grid.ColumnSpan="2" Margin="5,5,5,5">
 			<Grid Grid.Column="2" Grid.ColumnSpan="2">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="50"/>
@@ -68,6 +69,6 @@
 				<TextBox Grid.Row="6" Grid.Column="1" Name="Pressure"/>
 			</Grid>
 		</Border>
-		<Button Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Content="Generate" Name="Save"/>
+		<Button Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Content="Generate" Name="Generate" Margin="5,8,5,8"/>
 	</Grid>
-</Window>
+</Controls:MetroWindow>

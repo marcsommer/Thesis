@@ -4,6 +4,11 @@ namespace MainShell.ViewModels
 {
 	public class ShellViewModel : IShell
 	{
-		public InputGenerationViewModel InputGeneration { get; set; }
+		public SimulationViewModel SimulationViewModel { get; private set; }
+
+		public ShellViewModel(SimulationViewModel viewModel)
+		{
+			SimulationViewModel = viewModel;
+		}
 	}
 }

@@ -107,8 +107,20 @@ namespace Simulator.ViewModels
 			}
 		}
 
-		public bool CanSave { get { return invalidEntries.Count == 0; } }
+		public bool CanGenerate { get { return !invalidEntries.Any(); } }
 
+		public void Generate()
+		{
+			TryClose(true);
+		}
+
+		public InputGenerationViewModel()
+		{
+			OuterRadius = 2e-3;
+			InnerRadius = 1e-3;
+			FiniteElementCount = 10;
+			ElasticityCoefficient = 1000;
+		}
 
 		public string Error
 		{
@@ -165,7 +177,7 @@ namespace Simulator.ViewModels
 						}
 					}
 				}
-
+				
 				if(string.IsNullOrEmpty(message))
 				{
 					invalidEntries.Remove(columnName);
@@ -175,7 +187,7 @@ namespace Simulator.ViewModels
 					invalidEntries.Add(columnName);
 				}
 
-				NotifyOfPropertyChange(() => CanSave);
+				NotifyOfPropertyChange(() => CanGenerate);
 				return message;
 			}
 		}
