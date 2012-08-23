@@ -8,13 +8,20 @@
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 		<TextBlock Text="TITLE" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold"  VerticalAlignment="Center"/>
-		<TabControl Grid.Row="1">
-			<TabItem Header="Simulation">
+		<TabControl Name="Items" Grid.Row="1">
+			<TabControl.ItemTemplate>
+				<DataTemplate>
+					<Grid>
+						<TextBlock Text="{Binding DisplayName}"/>
+					</Grid>
+				</DataTemplate>
+			</TabControl.ItemTemplate>
+			<!--<TabItem Header="Simulation">
 				<ContentControl Name="SimulationViewModel"/>
 			</TabItem>
 			<TabItem Header="Results">
-				<ContentControl Name="ResultsViewModel"/>
-			</TabItem>
+				<ContentControl Name="ResultViewModel"/>
+			</TabItem>-->
 		</TabControl>
 	</Grid>
 </Controls:MetroWindow>

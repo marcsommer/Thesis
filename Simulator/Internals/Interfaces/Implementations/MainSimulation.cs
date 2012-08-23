@@ -14,7 +14,8 @@ namespace Simulator.Internals.Interfaces.Implementations
         private Configuration config;
         private Matrix d;
     	private Point[] nodes;
-        private double[] residVector;
+
+		private double[] residVector;
 
 		private bool simulationReady;
         /// <summary>
@@ -402,15 +403,10 @@ namespace Simulator.Internals.Interfaces.Implementations
             simulationReady = true;
         }
 
-        public Point[] GetNodeList()
-        {
-            var points = new Point[nodes.Length];
-            
-            
-            nodes.CopyTo(points,0);
-
-            return points;
-        }
+		public Point[] GetNodeList()
+		{
+			return nodes;
+		}
 
         public int ElementCount()
         {

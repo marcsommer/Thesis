@@ -7,6 +7,10 @@ using Autofac.Core;
 using Autofac.Features.ResolveAnything;
 using Caliburn.Micro;
 using MainShell.ViewModels;
+using ResultDisplay.ViewModels;
+using Simulator;
+using Simulator.Internals.Interfaces;
+using Simulator.Internals.Interfaces.Implementations;
 using Simulator.ViewModels;
 
 namespace MainShell
@@ -18,10 +22,14 @@ namespace MainShell
 		protected override void Configure()
 		{
 			var builder = new ContainerBuilder();
-			AssemblySource.Instance.Add(typeof(InputGenerationViewModel).Assembly);
+			AssemblySource.Instance.Add(typeof(SimulationViewModel).Assembly);
+			AssemblySource.Instance.Add(typeof(ResultDisplayViewModel).Assembly);
 			builder.Register(x => new WindowManager()).As<IWindowManager>();
-			builder.Register(x => new EventAggregator()).As<IEventAggregator>();
+			builder.Register(x => new EventAggregator()).As<IEventAggregator>().SingleInstance();
 			builder.Register(x => new InputGenerationViewModel()).AsSelf();
+			builder.Register(x => new MainSimulation()).As<ISimulation>();
+			builder.Register(x => new ConfigurationIo()).As<IConfigurationIo>();
+			builder.Register(x => new FileDialogWrapper()).As<IFileDialogWrapper>();
 			builder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());
 
 			container = builder.Build();
