@@ -7,7 +7,7 @@
 			<RowDefinition Height="60"/>
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
-		<TextBlock Text="TITLE" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold"  VerticalAlignment="Center"/>
+		<TextBlock Text="Title" Style="{StaticResource MainTitle}"/>
 		<TabControl Name="Items" Grid.Row="1">
 			<TabControl.ItemTemplate>
 				<DataTemplate>
@@ -16,12 +16,6 @@
 					</Grid>
 				</DataTemplate>
 			</TabControl.ItemTemplate>
-			<!--<TabItem Header="Simulation">
-				<ContentControl Name="SimulationViewModel"/>
-			</TabItem>
-			<TabItem Header="Results">
-				<ContentControl Name="ResultViewModel"/>
-			</TabItem>-->
 		</TabControl>
 	</Grid>
 </Controls:MetroWindow>

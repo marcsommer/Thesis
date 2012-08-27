@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Dynamic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using Simulator.Internals;

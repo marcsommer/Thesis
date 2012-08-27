@@ -20,6 +20,7 @@ namespace MainShell.ViewModels
 		
 		public void Handle(Events.SimulationFinishedEvent message)
 		{
+			ResultTab.ContentViewModel.Result = message.Result;
 			ActivateItem(ResultTab);
 		}
 	}

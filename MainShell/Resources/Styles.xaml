@@ -3,5 +3,15 @@
 
 
 	<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-	
+	<Style TargetType="TextBlock" x:Key="MainTitle" BasedOn="{StaticResource {x:Type TextBlock}}">
+		<Setter Property="FontSize" Value="30"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+		<Setter Property="VerticalAlignment" Value="Center"/>
+	</Style>
+	<Style TargetType="TextBlock" x:Key="TabContentTitle" BasedOn="{StaticResource {x:Type TextBlock}}">
+		<Setter Property="FontSize" Value="24"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+	</Style>
 </ResourceDictionary>

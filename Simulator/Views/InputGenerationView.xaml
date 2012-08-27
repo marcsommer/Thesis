@@ -3,6 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                  Title="Input Generation View" Height="400" Width="700">
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="pack://application:,,,/SimulatorStyles.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"/>
@@ -14,7 +21,7 @@
 			<ColumnDefinition Width="90"/>
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
-		<Border  Grid.Column="0" Grid.ColumnSpan="2" Margin="5,5,5,5">
+		<Border Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GenerationScreenBorder}">
 			<Grid Grid.Column="0" Grid.ColumnSpan="2">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="50"/>

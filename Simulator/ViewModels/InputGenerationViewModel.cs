@@ -132,7 +132,7 @@ namespace Simulator.ViewModels
 			get
 			{
 				var message = string.Empty;
-				if(columnName == Property.GetName(() => OuterRadius))
+				if(columnName == OuterRadius.GetName())
 				{
 					if (OuterRadius <= 0)
 					{
@@ -143,7 +143,7 @@ namespace Simulator.ViewModels
 						message = "Outer radius is smaller or equal to inner radius";
 					}
 				}
-				else if(columnName == Property.GetName(() => InnerRadius))
+				else if(columnName == InnerRadius.GetName())
 				{
 					if (InnerRadius <= 0)
 					{
@@ -154,17 +154,17 @@ namespace Simulator.ViewModels
 						message = "Inner radius is greater than or equal to outer radius";
 					}
 				}
-				else if(columnName == Property.GetName(() => FiniteElementCount))
+				else if(columnName == FiniteElementCount.GetName())
 				{
 					if (FiniteElementCount < 6)
 						message = "Finite element count has to be 6 or more";
 				}
-				else if(columnName == Property.GetName(() => ElasticityCoefficient))
+				else if(columnName == ElasticityCoefficient.GetName())
 				{
 					if (ElasticityCoefficient <= 0)
 						message = "Elasticity coefficient should be greater than zero";
 				}
-				else if(columnName == Property.GetName(() => Filename))
+				else if(columnName == Filename.GetName())
 				{
 					if (!string.IsNullOrEmpty(Filename))
 					{
@@ -186,7 +186,7 @@ namespace Simulator.ViewModels
 				{
 					invalidEntries.Add(columnName);
 				}
-
+				
 				NotifyOfPropertyChange(() => CanGenerate);
 				return message;
 			}
