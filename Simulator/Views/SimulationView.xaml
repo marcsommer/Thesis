@@ -6,12 +6,16 @@
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
 	<UserControl.Resources>
-		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-		<!--<ResourceDictionary>
+		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="pack://application:,,,/SimulatorStyles.xaml"/>
+				<ResourceDictionary Source="pack://application:,,,/MainShell;component/Resources/Styles.xaml" />
 			</ResourceDictionary.MergedDictionaries>
-		</ResourceDictionary>-->
+			<Style x:Key="GridButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+				<Setter Property="Margin" Value="3,0,3,5"/>
+			</Style>
+			
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibiltyConverter"/>
+		</ResourceDictionary>		
 	</UserControl.Resources>
     <Grid>
 		<Grid.RowDefinitions>
@@ -42,9 +46,9 @@
 				<ColumnDefinition Width="120"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
-			<Button Content="Generate" Name="Generate" Grid.Row="2"/>
-			<Button Content="Open" Name="OpenFile" Grid.Row="1"/>
-			<Button Content="Run" Name="RunSimulation" Grid.Row="4"/>
+			<Button Content="Generate" Name="Generate" Grid.Row="2" Style="{StaticResource GridButton}"/>
+			<Button Content="Open" Name="OpenFile" Grid.Row="1" Style="{StaticResource GridButton}"/>
+			<Button Content="Run" Name="RunSimulation" Grid.Row="4" Style="{StaticResource GridButton}"/>
 			<Separator Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
 			<Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"  Panel.ZIndex="5000">
 				<Grid.RowDefinitions>
