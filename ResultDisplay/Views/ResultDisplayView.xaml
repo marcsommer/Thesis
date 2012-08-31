@@ -11,7 +11,7 @@
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 		<TextBlock Text="RESULTS!"  FontSize="28"/>
-		<ListBox Grid.Row="1" ItemsSource="{Binding Result}">
+		<ListBox Grid.Row="1" ItemsSource="{Binding OriginalPoints}">
 		</ListBox>
 	</Grid>
 </UserControl>

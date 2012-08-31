@@ -20,7 +20,8 @@ namespace MainShell.ViewModels
 		
 		public void Handle(Events.SimulationFinishedEvent message)
 		{
-			ResultTab.ContentViewModel.Result = message.Result;
+			ResultTab.ContentViewModel.MovedPoints = message.MovedPoints;
+			ResultTab.ContentViewModel.OriginalPoints = message.OriginalPoints;
 			ActivateItem(ResultTab);
 		}
 	}

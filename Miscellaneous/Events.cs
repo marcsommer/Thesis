@@ -1,14 +1,19 @@
-﻿namespace Miscellaneous
+﻿using System.Collections.Generic;
+using System.Windows;
+
+namespace Miscellaneous
 {
 	public class Events
 	{
 		public class SimulationFinishedEvent
 		{
-			public double[] Result { get; private set; }
+			public IEnumerable<Point> OriginalPoints { get; private set; }
+			public IEnumerable<Point> MovedPoints { get; private set; } 
 			
-			public SimulationFinishedEvent(double[] result)
+			public SimulationFinishedEvent(IEnumerable<Point> originalPoints, IEnumerable<Point> movedPoints)
 			{
-				Result = result;
+				OriginalPoints = originalPoints;
+				MovedPoints = movedPoints;
 			}
 		}
 	}

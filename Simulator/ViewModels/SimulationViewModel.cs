@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -98,10 +99,24 @@ namespace Simulator.ViewModels
 					IsBusy = false;
 					if (taskResult.Exception != null)
 						throw taskResult.Exception;
-					eventAggregator.Publish(new Events.SimulationFinishedEvent(taskResult.Result));
+					eventAggregator.Publish(new Events.SimulationFinishedEvent(SimulatorWrapper.Simulation.GetNodeList().ToWindowsPoints(), GetMovedPoints(taskResult.Result).ToWindowsPoints()));
 				}, TaskScheduler.FromCurrentSynchronizationContext());
 		}
 		
+		private IEnumerable<Point> GetMovedPoints(double[] moveVector)
+		{
+			var nodes = SimulatorWrapper.Simulation.GetNodeList();
+			var resultList = new List<Point>(nodes.Length);
+			for (var i = 0; i < nodes.Length; i++)
+			{
+				var x = nodes[i].X.Value + moveVector[i];
+				var y = nodes[i].Y.Value + moveVector[i + 1];
+				resultList[i] = new Point(x, y);
+			}
+
+			return resultList;
+		}
+
 		public bool CanRunSimulation
 		{
 			get

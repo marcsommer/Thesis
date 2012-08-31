@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace Miscellaneous
 {
-	public static class Property
+	public class Property
 	{
 		public static string GetName<T>(Expression<Func<T>> property)
 		{
@@ -14,11 +14,6 @@ namespace Miscellaneous
 				return memberExpr.Member.Name;
 
 			throw new InvalidOperationException("No property reference was found");
-		}
-
-		public static string GetName<T>(this T obj)
-		{
-			return GetName(() => obj);
 		}
 	}
 }

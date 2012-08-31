@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Linq;
+using Windows = System.Windows;
 
 namespace Simulator.Internals
 {
@@ -46,9 +47,9 @@ namespace Simulator.Internals
             }
         }
 
-        public static System.Windows.Point[] ToWindowsPointArray(this IEnumerable<Point> points)
-        {
-            return points.Select(point => new System.Windows.Point(point.X.Value, point.Y.Value)).ToArray();
-        }
+		public static IEnumerable<Windows::Point> ToWindowsPoints(this IEnumerable<Point> points)
+		{
+			return points.Select(point => new Windows::Point(point.X.Value, point.Y.Value));
+		}
 	}
 }

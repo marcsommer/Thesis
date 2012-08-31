@@ -48,7 +48,7 @@
 			</Grid.ColumnDefinitions>
 			<Button Content="Generate" Name="Generate" Grid.Row="2" Style="{StaticResource GridButton}"/>
 			<Button Content="Open" Name="OpenFile" Grid.Row="1" Style="{StaticResource GridButton}"/>
-			<Button Content="Run" Name="RunSimulation" Grid.Row="4" Style="{StaticResource GridButton}"/>
+			<Button Content="Run" Name="RunSimulation" Grid.Row="4" Style="{StaticResource GridButton}" ToolTip="Run simulation"/>
 			<Separator Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
 			<Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"  Panel.ZIndex="5000">
 				<Grid.RowDefinitions>

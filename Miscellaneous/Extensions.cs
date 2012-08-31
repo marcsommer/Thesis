@@ -9,5 +9,11 @@ namespace Miscellaneous
 		{
 			return input == null ? null : func(input);
 		}
+
+
+		public static string GetName<T>(this T obj)
+		{
+			return Property.GetName(() => obj);
+		}
 	}
 }
