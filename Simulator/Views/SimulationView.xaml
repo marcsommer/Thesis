@@ -50,15 +50,16 @@
 			<Button Content="Open" Name="OpenFile" Grid.Row="1" Style="{StaticResource GridButton}"/>
 			<Button Content="Run" Name="RunSimulation" Grid.Row="4" Style="{StaticResource GridButton}" ToolTip="Run simulation"/>
 			<Separator Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
-			<Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"  Panel.ZIndex="5000">
+			<Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="3">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="50"/>
 					<RowDefinition Height="*"/>
 					<RowDefinition Height="Auto"/>
 				</Grid.RowDefinitions>
 				<TextBlock Grid.Row="0" Text="TITLE PLACEHOLDER" Style="{StaticResource TabContentTitle}"/>
-				<TextBlock Grid.Row="1" Text="CHART PLACEHOLDER" Style="{StaticResource TabContentTitle}" VerticalAlignment="Center"/>
-				<Grid Grid.Row="3">
+				<!--<TextBlock Grid.Row="1" Text="CHART PLACEHOLDER" Style="{StaticResource TabContentTitle}" VerticalAlignment="Center"/>-->
+				<ContentControl Grid.Row="1" VerticalAlignment="Stretch"  Name="SurfacePlotViewModel"/>
+				<Grid Grid.Row="2">
 					<Grid.RowDefinitions>
 						<RowDefinition Height="Auto"/>
 						<RowDefinition Height="Auto"/>

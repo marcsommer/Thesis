@@ -11,6 +11,18 @@ namespace Simulator.ViewModels
 {
 	public class SimulationViewModel : PropertyChangedBase
 	{
+		private SurfacePlotViewModel surfacePlotViewModel;
+
+		public SurfacePlotViewModel SurfacePlotViewModel
+		{
+			get { return surfacePlotViewModel; }
+			set
+			{
+				if (Equals(value, surfacePlotViewModel)) return;
+				surfacePlotViewModel = value;
+				NotifyOfPropertyChange(() => SurfacePlotViewModel);
+			}
+		}
 
 		public SimulatorWrapper SimulatorWrapper
 		{
@@ -40,6 +52,7 @@ namespace Simulator.ViewModels
 			this.eventAggregator = eventAggregator;
 			simulatorWrapper = wrapper;
 			fileDialogWrapper = fileDialog;
+			SurfacePlotViewModel = new SurfacePlotViewModel();
 		}
 
 		public void Generate()
