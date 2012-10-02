@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
@@ -29,18 +30,33 @@ namespace Miscellaneous
 			DependencyProperty.Register("SurfaceBrush", typeof(Brush), typeof(SurfacePlotVisual3D),
 										new UIPropertyMetadata(null, ModelChanged));
 
+		public static readonly DependencyProperty IntervalXProperty =
+			DependencyProperty.Register("IntervalX", typeof (double), typeof (SurfacePlotVisual3D), new UIPropertyMetadata(0.0, ModelChanged));
+
+		public static readonly DependencyProperty IntervalYProperty =
+			DependencyProperty.Register("IntervalY", typeof(double), typeof(SurfacePlotVisual3D), new UIPropertyMetadata(0.0, ModelChanged));
+
+		public static readonly DependencyProperty IntervalZProperty =
+			DependencyProperty.Register("IntervalZ", typeof(double), typeof(SurfacePlotVisual3D), new UIPropertyMetadata(0.0, ModelChanged));
+
+		public static readonly DependencyProperty FontSizeProperty =
+			DependencyProperty.Register("FontSize", typeof(double), typeof(SurfacePlotVisual3D), new UIPropertyMetadata(0.0, ModelChanged));
+
+		public static readonly DependencyProperty LineThicknessProperty =
+			DependencyProperty.Register("LineThickness", typeof(double), typeof(SurfacePlotVisual3D), new UIPropertyMetadata(0.0, ModelChanged));
+
 		private readonly ModelVisual3D visualChild;
 
 		public SurfacePlotVisual3D()
 		{
-			IntervalX = 1;
-			IntervalY = 1;
-			IntervalZ = 0.25;
-			FontSize = 0.06;
-			LineThickness = 0.01;
-
 			visualChild = new ModelVisual3D();
 			Children.Add(visualChild);
+
+			//IntervalX = 1;
+			//IntervalY = 1;
+			//IntervalZ = 0.25;
+			//FontSize = 0.06;
+			//LineThickness = 0.01;
 		}
 
 		/// <summary>
@@ -73,13 +89,35 @@ namespace Miscellaneous
 			set { SetValue(SurfaceBrushProperty, value); }
 		}
 
+		public double IntervalX
+		{
+			get { return (double)GetValue(IntervalXProperty); }
+			set { SetValue(IntervalXProperty, value); }
+		}
 
-		// TODO: make Dependency properties
-		public double IntervalX { get; set; }
-		public double IntervalY { get; set; }
-		public double IntervalZ { get; set; }
-		public double FontSize { get; set; }
-		public double LineThickness { get; set; }
+		public double IntervalY
+		{
+			get { return (double)GetValue(IntervalYProperty); }
+			set { SetValue(IntervalYProperty, value); }
+		}
+
+		public double IntervalZ
+		{
+			get { return (double)GetValue(IntervalZProperty); }
+			set { SetValue(IntervalZProperty, value); }
+		}
+
+		public double LineThickness
+		{
+			get { return (double)GetValue(LineThicknessProperty); }
+			set { SetValue(LineThicknessProperty, value); }
+		}
+
+		public double FontSize
+		{
+			get { return (double)GetValue(FontSizeProperty); }
+			set { SetValue(FontSizeProperty, value); }
+		}
 
 		private static void ModelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
@@ -88,7 +126,8 @@ namespace Miscellaneous
 
 		private void UpdateModel()
 		{
-			visualChild.Content = CreateModel();
+			if(Points != null)
+				visualChild.Content = CreateModel();
 		}
 
 		private Model3D CreateModel()
@@ -160,7 +199,7 @@ namespace Miscellaneous
 				path.Add(new Point3D(x, maxY, minZ));
 
 				axesMeshBuilder.AddTube(path, LineThickness, 9, false);
-				GeometryModel3D label = TextCreator.CreateTextLabelModel3D(x.ToString(), Brushes.Black, true, FontSize,
+				GeometryModel3D label = TextCreator.CreateTextLabelModel3D(x.ToString(CultureInfo.InvariantCulture), Brushes.Black, true, FontSize,
 																		   new Point3D(x, minY - FontSize * 2.5, minZ),
 																		   new Vector3D(1, 0, 0), new Vector3D(0, 1, 0));
 				plotModel.Children.Add(label);
@@ -185,7 +224,7 @@ namespace Miscellaneous
 				path.Add(new Point3D(maxX, y, minZ));
 
 				axesMeshBuilder.AddTube(path, LineThickness, 9, false);
-				GeometryModel3D label = TextCreator.CreateTextLabelModel3D(y.ToString(), Brushes.Black, true, FontSize,
+				GeometryModel3D label = TextCreator.CreateTextLabelModel3D(y.ToString(CultureInfo.InvariantCulture), Brushes.Black, true, FontSize,
 																		   new Point3D(minX - FontSize * 3, y, minZ),
 																		   new Vector3D(1, 0, 0), new Vector3D(0, 1, 0));
 				plotModel.Children.Add(label);
@@ -200,7 +239,7 @@ namespace Miscellaneous
 			double z0 = (int)(minZ / IntervalZ) * IntervalZ;
 			for (double z = z0; z <= maxZ + double.Epsilon; z += IntervalZ)
 			{
-				GeometryModel3D label = TextCreator.CreateTextLabelModel3D(z.ToString(), Brushes.Black, true, FontSize,
+				GeometryModel3D label = TextCreator.CreateTextLabelModel3D(z.ToString(CultureInfo.InvariantCulture), Brushes.Black, true, FontSize,
 																		   new Point3D(minX - FontSize * 3, maxY, z),
 																		   new Vector3D(1, 0, 0), new Vector3D(0, 0, 1));
 				plotModel.Children.Add(label);
